@@ -1,0 +1,13 @@
+
+127.0.0.1       localhost
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+# --- BEGIN PVE ---
+127.0.1.1 Ansible.fritz.box Ansible
+# --- END PVE ---
+
+192.168.178.125 paperless
+192.168.178.61  beelink2
+192.168.178.111 Ansible
+192.168.178.118 tesseract

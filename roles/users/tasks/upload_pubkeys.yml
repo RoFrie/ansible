@@ -1,0 +1,33 @@
+---
+- name: "Create root user's .ssh directory"
+  file:
+    path: /root/.ssh
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+
+- name: "Copy root user's authorized_keys"
+  copy:
+    src: authorized_keys_root
+    dest: /root/.ssh/authorized_keys
+    owner: root
+    group: root
+    mode: 0600
+
+- name: "Create rolf user's .ssh directory"
+  file:
+    path: /home/rolf/.ssh
+    state: directory
+    owner: rolf
+    group: users
+    mode: 0700
+
+- name: "Copy rolf user's authorized_keys"
+  copy:
+    src: authorized_keys_rolf
+    dest: /home/rolf/.ssh/authorized_keys
+    owner: rolf
+    group: users
+    mode: 0600
+

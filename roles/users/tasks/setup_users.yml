@@ -1,0 +1,24 @@
+
+---
+- name: Create "rolf" user
+  user:
+    name: rolf
+    shell: /bin/bash
+    uid: 1000
+    group: users
+    groups: sudo
+    append: true
+    password: $6$0D5kP0um3oK7$S20lCwWjR1DT1/6kR4xwGHcSzUFBAvkKkNCJUDj4glvKztHuEe6aAAOKy91XwWW.nXMIyNd427C4y0NKkrBvo1
+
+- name: Add user "rolf" to "sudo-nopasswd" group
+  user:
+    name: rolf
+    groups: sudo-nopasswd
+    append: true
+  when: passwordless_sudo is defined and passwordless_sudo == true
+
+- name: Remove user "rolf" from "sudo-nopasswd" group
+  shell: /usr/sbin/delgroup rolf sudo-nopasswd
+  when: not (passwordless_sudo is defined and passwordless_sudo == true)
+  ignore_errors: yes
+

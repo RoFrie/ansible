@@ -1,1 +1,8 @@
-adguard.fritz.box
+[servers]
+adguard
+paperless
+tesseract
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+

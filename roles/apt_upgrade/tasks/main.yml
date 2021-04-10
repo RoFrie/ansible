@@ -1,0 +1,6 @@
+---
+- name: "Update and upgrade apt packages - {{ role_path }} - "
+  apt:
+    upgrade: 'yes'
+    update_cache: yes
+

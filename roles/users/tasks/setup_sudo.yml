@@ -1,0 +1,20 @@
+---
+#- name: Display all variables/facts known for a host
+#  debug:
+#    var: hostvars[inventory_hostname]
+#  tags: debug_info
+
+- name: "Install sudo {{ role_path }}"
+  apt:
+    name: sudo
+
+- name: Create "sudo-nopasswd" group
+  group:
+    name: sudo-nopasswd
+
+- name: Add "sudo-nopasswd" group to "sudoers" file
+  lineinfile:
+    dest: /etc/sudoers
+    line: "%sudo-nopasswd ALL=(ALL:ALL) NOPASSWD:ALL"
+    regexp: "^%sudo-nopasswd"
+
